@@ -10,21 +10,22 @@ public:
  float hypo()
 {
 float x,y,z;
-printf("enter a sides parameters:\n" );
- cin>>x;
- cin>>y;
-    cout<<"side one:";
-    cout<<x;
-    cout<<" side two:";
-    cout<<y  <<endl;
+printf("enter a sides parameters:\n\n" );
+    cout<<"side one: ";
+    cin>>x;
+    cout<<"side two: ";
+    cin>>y;
+    cout<<"\n";
          z=sqrt(x*x+y*y);
-            return z;
+    cout<<"the hypotenuse value is:"
+        <<z<<endl;
+    return 0;
 }
  float bise()
  {
      float x,y,z,b;
      int i;
-     printf("enter a sides parametrs a, b, c:\n");
+     printf("enter a sides parameters a, b, c:\n");
      cin>>x;
      cin>>y;
      cin>>z;
@@ -53,49 +54,109 @@ case 3:
     cout<<b<<endl;
     break;
     }
-
+return 0;
  }
+ float per(){
+  float x,y,z;
+     int i;
+     printf("enter a sides parameters a, b, c:\n");
+     cin>>x;
+     cin>>y;
+     cin>>z;
+     cout<<"side a:";
+        cout<<x;
+     cout<<" side b:";
+        cout<<y;
+     cout<<" side c:";
+        cout<<z<<endl;
+        cout<<"the perimeter value is:"
+            <<x+y+z<<endl;
+            return 0;
+ }
+float area(){
+ float x,y,z,p,s;
+    printf("enter a sides parameters a, b, c:\n");
+     cin>>x;
+     cin>>y;
+     cin>>z;
+     cout<<"side a:";
+        cout<<x;
+     cout<<" side b:";
+        cout<<y;
+     cout<<" side c:";
+        cout<<z<<endl;
+    p=(x+y+z)/2;
+    s=sqrt(p*(p-x)*(p-y)*(p-z));
+    cout<<"area of triangle is:"
+        <<s<<endl;
+        return 0;
+
+}
 };
+
+
+
+
+
+
 int main()
 {
 
     int i,v;
     char m,c;
-        printf("this program calculates some functions' value.");
+     do{   printf("this program calculates some functions' value.");
         printf("what kind of function you need calculate?\n");
         cout<< "h- hypotenuse\n"
-            << "b- bisector\n";
+            << "b- bisector\n"
+            << "p- perimeter\n"
+            << "a- area\n";
             cin>>c;
             cout<<c<<endl;
+            if ((c!='h')&&(c!='b')&&(c!='p')&&(c!='a')) //exception keeper
+            {
+                    break;
+            }
         printf("how many values you need?\n");
             cin>>v;
             cout<<v<<endl;
-        printf("do you want to continue?  y / n\n" );//request of abort
-            cin>>m;
 
-if (m=='y')
-{switch (c){
+
+
+switch (c){
 case 'h':
     for (i=0; i<v; i++)//number of calculates
   {
-       Calc foo;
-    cout<<"value of hypotenuse is:"//results
-        <<foo.hypo()<<endl;//our function's using here
+    Calc foo;
+    foo.hypo();
     }
     break;
 case 'b':
      for (i=0; i<v; i++)//number of calculates
   {
-       Calc foo;
-      foo.bise();//our function's using here
+    Calc foo;
+    foo.bise();//our function's using here
     }
     break;
-}
-}
-    else
+case 'p':
+    for (i=0; i<v; i++)
     {
-    printf("ok\n"); //abort way
+    Calc foo;
+    foo.per();
     }
+    break;
+case 'a':
+   for (i=0; i<v; i++)
+    {
+    Calc foo;
+    foo.area();
+    }
+   break;
+}
+
+
+     printf("do you want to exit?  y / n\n" );//request of abort
+            cin>>m;
+     } while(m!='y');
     //this is time when you used a program
     time_t rawtime;
           struct tm * timeinfo;
